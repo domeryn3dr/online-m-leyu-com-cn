@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://domeryn3dr.github.io/online-m-leyu-com-cn/sitemap.xml
