@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彩经网 · 数据观察与趋势知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f9fafb;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.03);
+            padding: 2.8rem 2rem 3.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .page {
+                padding: 1.8rem 1.2rem 2.4rem;
+                border-radius: 18px;
+            }
+        }
+
+        /* 目录感标题区 */
+        .site-marker {
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #e9edf2;
+            padding-bottom: 0.6rem;
+        }
+
+        .site-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
+            color: #0b1e33;
+        }
+
+        .title-sub {
+            font-size: 1rem;
+            color: #475569;
+            margin-bottom: 2.2rem;
+            font-weight: 400;
+            border-left: 3px solid #d0d9e6;
+            padding-left: 1rem;
+        }
+
+        /* 说明区 — 快速识别网站用途 */
+        .intro-block {
+            background: #f2f5f9;
+            padding: 1.6rem 1.8rem;
+            border-radius: 18px;
+            margin-bottom: 2.5rem;
+        }
+
+        .intro-block h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #0b1e33;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .intro-block p {
+            font-size: 0.96rem;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-highlight {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            margin-top: 1rem;
+            border: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        /* 知识卡片式特点区 — 目录感布局 */
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #7c8ba0;
+            margin: 2rem 0 1rem 0;
+            font-weight: 500;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 500px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+        }
+
+        .card {
+            background: #fafcff;
+            border: 1px solid #e9edf2;
+            border-radius: 18px;
+            padding: 1.2rem 1.2rem 1.4rem;
+            transition: box-shadow 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #0f2a44;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: #334155;
+        }
+
+        .card .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: #e2e8f0;
+            color: #1e293b;
+            padding: 0.1rem 0.5rem;
+            border-radius: 30px;
+            margin-top: 0.6rem;
+            font-weight: 500;
+        }
+
+        /* 提示区 */
+        .tip-area {
+            background: #ffffff;
+            border: 1px dashed #cbd5e1;
+            border-radius: 18px;
+            padding: 1.6rem 1.4rem;
+            margin: 1.8rem 0 2.2rem;
+        }
+
+        .tip-area h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tip-area ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tip-area li {
+            font-size: 0.9rem;
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            position: relative;
+            color: #2c3e50;
+        }
+
+        .tip-area li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #5b7a9a;
+            font-weight: bold;
+        }
+
+        /* 相关信息区 (FAQ 摘要 + 链接) */
+        .related {
+            border-top: 1px solid #e9edf2;
+            padding-top: 1.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .related h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #254358;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: #0b1e33;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-answer {
+            font-size: 0.86rem;
+            color: #475569;
+            padding-left: 0.2rem;
+        }
+
+        .faq-answer a {
+            color: #1e4b6e;
+            text-decoration: none;
+            border-bottom: 1px solid #c0d0e0;
+        }
+
+        .faq-answer a:hover {
+            border-bottom-color: #1e4b6e;
+        }
+
+        .inline-link {
+            color: #1e4b6e;
+            text-decoration: none;
+            border-bottom: 1px solid #c0d0e0;
+            font-weight: 500;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #1e4b6e;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            font-size: 0.78rem;
+            color: #8899aa;
+            border-top: 1px solid #eef2f6;
+            padding-top: 1.5rem;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <div class="site-marker">📋 知识库 · 目录</div>
+
+    <h1 class="site-title">彩经网</h1>
+    <div class="title-sub">数据观察 · 趋势分析 · 资讯筛选</div>
+
+    <!-- 说明区：快速识别网站用途 -->
+    <div class="intro-block">
+        <h2>▎这个网站做什么？</h2>
+        <p><strong>彩经网</strong> 是一个围绕数字趋势与概率信息的知识型站点。用户可以通过它了解不同领域的统计规律、历史数据分布以及相关资讯的整理摘要。网站不提供任何投注或即时交易功能，而是专注于信息聚合与结构化展示。</p>
+        <p>无论你是初次接触数值分析，还是希望快速查阅某一类公开数据，<a href="https://net-caijing.com" class="inline-link">彩经网</a> 都尝试以更清晰的目录和摘要方式呈现信息，降低筛选成本。</p>
+        <div class="intro-highlight">
+            ⚡ 适合快速定位：频率统计、区间分布、术语说明、相关动态。
+        </div>
+    </div>
+
+    <!-- 目录感卡片：特点、场景混合 -->
+    <div class="section-label">— 信息组织方式 —</div>
+
+    <div class="feature-grid">
+        <div class="card">
+            <h3>📊 分类速览</h3>
+            <p>按主题模块划分数据摘要，每个分类下包含表格、趋势简述与术语说明，便于横向对比。</p>
+            <span class="badge">目录式</span>
+        </div>
+        <div class="card">
+            <h3>📰 资讯简报</h3>
+            <p>聚合来自公开来源的相关动态，经过精简与归并，保留关键时间节点与数值变化。</p>
+            <span class="badge">摘要</span>
+        </div>
+        <div class="card">
+            <h3>🧩 术语说明</h3>
+            <p>对常见分析概念做简短释义，例如区间、遗漏、冷热等，降低阅读理解门槛。</p>
+            <span class="badge">参考</span>
+        </div>
+        <div class="card">
+            <h3>📁 历史归档</h3>
+            <p>按周期整理的结构化数据列表，支持按字段大致浏览，适合回溯与观察变化。</p>
+            <span class="badge">归档</span>
+        </div>
+    </div>
+
+    <!-- 提示区：使用建议 -->
+    <div class="tip-area">
+        <h3>📌 使用提示</h3>
+        <ul>
+            <li>页面内容基于公开信息整理，不构成任何形式的建议或预测。</li>
+            <li>数据更新频率因模块而异，部分摘要可能存在延迟，建议交叉核对原始来源。</li>
+            <li>网站仅提供信息浏览，不收集个人数据，无注册或评论功能。</li>
+            <li>若发现链接或数据异常，可通过相关渠道反馈（底部备注）。</li>
+        </ul>
+    </div>
+
+    <!-- 相关信息区：FAQ 摘要 + 实用链接 -->
+    <div class="related">
+        <h4>❓ 常见问题摘要</h4>
+        <div class="faq-item">
+            <div class="faq-question">Q：彩经网的数据来源是什么？</div>
+            <div class="faq-answer">网站主要整合公开的统计报告与行业资讯，部分数据经过归一化处理。引用时会标注大致来源类别。关于具体数据范围，可参考各模块附注。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Q：如何快速找到某一类趋势信息？</div>
+            <div class="faq-answer">建议使用页内目录或搜索功能（如浏览器查找）。首页按主题划分卡片，进入对应分类后可查看摘要与列表。更多内容可探索 <a href="https://net-caijing.com">彩经网</a> 的专题页面。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Q：网站是否有移动端适配？</div>
+            <div class="faq-answer">是的，页面采用窄正文与响应式栅格，在手机和平板上均可正常阅读。卡片布局会随屏幕宽度调整。</div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        彩经网 · 知识库入口 ｜ 基于公开信息整理，仅供个人参考。页面内容定期修订。
+    </div>
+
+</div>
+</body>
+</html>
