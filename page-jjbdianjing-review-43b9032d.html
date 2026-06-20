@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞技宝 – 专业站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1e1e1e;
+            background: #f4f6fa;
+        }
+        /* Hero 深色区域 */
+        .hero {
+            background: linear-gradient(145deg, #0a0e1a 0%, #131b2f 100%);
+            color: #f0f3fc;
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin: 0 auto;
+            color: #cbd5e6;
+            line-height: 1.7;
+        }
+        .hero .sub-line {
+            margin-top: 1.5rem;
+            color: #b0c1db;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.8rem 1.5rem 3rem;
+        }
+
+        /* 卡片组 —— 优势区 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
+            border: 1px solid #eef1f7;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(18, 28, 56, 0.08);
+        }
+        .card .icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #0a0e1a;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #3f475c;
+        }
+
+        /* 说明区 */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin: 2.4rem 0 1rem;
+            color: #0a0e1a;
+            border-left: 4px solid #2a66d9;
+            padding-left: 0.8rem;
+        }
+        .intro-text {
+            background: #ffffff;
+            padding: 1.8rem 2rem;
+            border-radius: 24px;
+            border: 1px solid #e7ecf5;
+            margin-bottom: 2rem;
+        }
+        .intro-text p {
+            margin-bottom: 0.9rem;
+            color: #222b42;
+        }
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 提示框 */
+        .note-box {
+            background: #eaf0fe;
+            border-left: 5px solid #2a66d9;
+            padding: 1.2rem 1.6rem;
+            border-radius: 14px;
+            margin: 2rem 0 1.8rem;
+            font-size: 0.95rem;
+            color: #1a2747;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e7ecf5;
+            margin: 2rem 0 1.2rem;
+        }
+        .faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #edf1f9;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 600;
+            color: #0f1a33;
+            margin-bottom: 0.25rem;
+        }
+        .faq-a {
+            color: #3b4668;
+            padding-right: 0.5rem;
+        }
+
+        /* 底部 */
+        .footer-links {
+            margin-top: 2.8rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #dbe1ed;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+        }
+        .footer-links a {
+            color: #2a66d9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .footer-links .copy {
+            color: #5f6b86;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero {
+                padding: 2.8rem 1.2rem 2.5rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .intro-text, .faq-mini {
+                padding: 1.2rem 1.2rem;
+            }
+            .footer-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        /* 强调色用于链接 */
+        a {
+            color: #2a66d9;
+            transition: color 0.15s;
+        }
+        a:visited {
+            color: #2a66d9;
+        }
+        a:hover {
+            color: #1d4eb3;
+            text-decoration: underline;
+        }
+        .em-link {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO 区 -->
+    <section class="hero">
+        <h1>竞技宝 · 站点介绍</h1>
+        <p>一份关于平台定位、内容特点与可信背景的说明页。我们力求以清晰、平实的方式呈现用户关心的信息。</p>
+        <div class="sub-line">—— 从了解开始，建立信任 ——</div>
+    </section>
+
+    <div class="container">
+
+        <!-- 优势区：卡片式概述 -->
+        <div class="card-grid">
+            <div class="card">
+                <span class="icon">📋</span>
+                <h3>信息透明</h3>
+                <p>站点结构清晰，功能说明与实际界面保持一致。</p>
+            </div>
+            <div class="card">
+                <span class="icon">🔍</span>
+                <h3>关注体验</h3>
+                <p>界面设计以易用性为出发点，减少不必要的跳转。</p>
+            </div>
+            <div class="card">
+                <span class="icon">⚙️</span>
+                <h3>持续迭代</h3>
+                <p>根据用户反馈与运营数据，定期优化内容与交互。</p>
+            </div>
+            <div class="card">
+                <span class="icon">🛡️</span>
+                <h3>安全优先</h3>
+                <p>采用标准加密与隐私保护措施，重视数据安全。</p>
+            </div>
+        </div>
+
+        <!-- 说明区：从站点介绍与可信说明的角度展开 -->
+        <h2 class="section-title">关于本网站</h2>
+        <div class="intro-text">
+            <p><strong>竞技宝</strong>（<a href="https://page-jjbdianjing.com">竞技宝</a>）是一个专注于提供综合信息服务的平台。本站所有内容均经过整理与核对，旨在为用户提供一个可靠的参考窗口。无论您是初次接触还是长期关注，都可以在这里找到结构化的说明与功能指引。</p>
+            <p>作为信息展示页面，我们注重内容的真实性与表达的克制。不采用夸张修辞，不诱导点击，而是通过清晰的分区与直接的描述，让用户自行判断与选择。平台运营团队持续对页面进行维护，确保链接有效性及内容时效性。</p>
+            <p>在可信说明方面，我们公开站点的基本定位：非第三方聚合，非仿冒页面，所有指向均以官方域名 <strong>page-jjbdianjing.com</strong> 为准。如果您需要了解更多背景，可以随时参考页面内提供的信息模块。</p>
+        </div>
+
+        <!-- 提示框  -->
+        <div class="note-box">
+            💡 <strong>提示：</strong> 本站所有外部链接均指向同一主域名。在浏览时如遇到任何疑问，建议通过站内信息索引进行核实。我们不收集非必要个人信息。
+        </div>
+
+        <!-- FAQ 摘要  -->
+        <h2 class="section-title">常见疑问（摘要）</h2>
+        <div class="faq-mini">
+            <div class="faq-item">
+                <div class="faq-q">▸ 竞技宝 是官方站点吗？</div>
+                <div class="faq-a">是的，<a href="https://page-jjbdianjing.com">竞技宝</a> 为该域名的正式称呼，页面内容由授权团队维护。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">▸ 页面上的信息是否定期更新？</div>
+                <div class="faq-a">核心功能与说明随版本迭代同步更新，细节变动会通过站内公告或更新日志体现。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">▸ 如何确认链接的安全性？</div>
+                <div class="faq-a">所有链接均指向 HTTPS 域名，您也可以手动核对浏览器地址栏域名是否与 page-jjbdianjing.com 一致。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">▸ 是否存在第三方代理或镜像？</div>
+                <div class="faq-a">目前仅此一个官方介绍页，不设代理、镜像或 affiliate 跳转。如有其他域名声称与本站相关，请谨慎辨别。</div>
+            </div>
+        </div>
+
+        <!-- 底部链接区  -->
+        <div class="footer-links">
+            <span>
+                <a href="https://page-jjbdianjing.com">竞技宝</a> · 介绍页
+            </span>
+            <span class="copy">
+                © 本页仅供说明用途 · 内容保持克制与真实
+            </span>
+        </div>
+
+    </div>
+
+</body>
+</html>
